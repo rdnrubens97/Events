@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace Events.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class EventController : ControllerBase
+    [Route("api/[controller]")]
+    public class EventsController : ControllerBase
     {
         private readonly EventsContext _context;
 
-        public EventController(EventsContext context) {
+        public EventsController(EventsContext context) {
             _context = context;
         }
 
@@ -43,12 +43,5 @@ namespace Events.Api.Controllers
         {
             return _context.Events;
         }
-
-
-
-
-
-
-
     }
 }

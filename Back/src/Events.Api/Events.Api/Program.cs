@@ -11,6 +11,7 @@ builder.Services.AddDbContext<EventsContext>(options => options.UseMySql(builder
     MySqlServerVersion.LatestSupportedServerVersion, builder => builder.MigrationsAssembly("Events.Api")));
 
 builder.Services.AddControllers();
+builder.Services.AddCors();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -26,6 +27,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors(x => x.AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .AllowAnyOrigin());
 
 app.MapControllers();
 
